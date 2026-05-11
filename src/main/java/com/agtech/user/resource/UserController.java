@@ -50,7 +50,7 @@ public class UserController {
     public ResponseEntity<User> update(
             @PathVariable Integer id,
             @RequestBody User userUpdate) {
-        User update = userService.update(userUpdate);
+        User update = userService.update(id, userUpdate);
 
         return ResponseEntity.ok().body(update);
     }

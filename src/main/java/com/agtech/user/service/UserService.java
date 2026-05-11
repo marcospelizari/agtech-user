@@ -1,6 +1,6 @@
 package com.agtech.user.service;
 
-import com.agtech.user.core.exception.UserNotFoundException;
+import com.agtech.core.exception.UserNotFoundException;
 import com.agtech.user.model.User;
 import com.agtech.user.repository.UserRepository;
 import org.springframework.stereotype.Service;

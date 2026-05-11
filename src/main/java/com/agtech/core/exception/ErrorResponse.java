@@ -1,4 +1,4 @@
-package com.agtech.user.core.exception;
+package com.agtech.core.exception;
 
 import org.springframework.http.HttpStatus;
 

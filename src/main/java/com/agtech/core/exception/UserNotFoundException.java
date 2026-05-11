@@ -1,4 +1,4 @@
-package com.agtech.user.core.exception;
+package com.agtech.core.exception;
 
 public class UserNotFoundException extends RuntimeException {
 
