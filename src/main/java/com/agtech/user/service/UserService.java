@@ -34,10 +34,18 @@ public class UserService {
         userRepository.deleteById(user.getId());
     }
 
-    public User update(User userUpdate) {
-        User user = findUserById(userUpdate.getId());
+    public User update(Integer id, User userUpdate) {
+        User user = findUserById(id);
 
-        return userRepository.save(user);
+        if (userUpdate.getName() != null) {
+            user.setName(userUpdate.getName());
+        }
+
+        if (userUpdate.getEmail() != null) {
+            user.setEmail(userUpdate.getEmail());
+        }
+
+        return userRepository.save(userUpdate);
     }
 
     private User findUserById(Integer id) {

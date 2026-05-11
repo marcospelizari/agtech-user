@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    private final String USER_NOT_FOUND = "Not Found";
+    private final static String USER_NOT_FOUND = "Not Found";
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> userNotFoundExcpetion(
+    public ResponseEntity<ErrorResponse> userNotFoundException(
             UserNotFoundException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
         ErrorResponse error = new ErrorResponse(

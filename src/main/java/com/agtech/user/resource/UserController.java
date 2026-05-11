@@ -46,7 +46,10 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    public ResponseEntity<User> update(@RequestBody User userUpdate) {
+    @PatchMapping(USER_ID)
+    public ResponseEntity<User> update(
+            @PathVariable Integer id,
+            @RequestBody User userUpdate) {
         User update = userService.update(userUpdate);
 
         return ResponseEntity.ok().body(update);
