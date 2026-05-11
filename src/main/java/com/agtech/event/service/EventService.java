@@ -34,8 +34,16 @@ public class EventService {
         eventRepository.deleteById(event.getId());
     }
 
-    public Event update(Event updateEvent) {
-        Event event = findEventById(updateEvent.getId());
+    public Event update(Integer id, Event updateEvent) {
+        Event event = findEventById(id);
+
+        if (updateEvent.getStatus() != event.getStatus() && updateEvent.getStatus() != null) {
+            event.setStatus(updateEvent.getStatus());
+        }
+
+        if (updateEvent.getRiskLevel() != event.getRiskLevel() && updateEvent.getRiskLevel() != null) {
+            event.setRiskLevel(updateEvent.getRiskLevel());
+        }
 
         return eventRepository.save(updateEvent);
     }

@@ -16,11 +16,11 @@ public class Event implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVENTS")
     @SequenceGenerator(name = "SEQ_EVENTS", sequenceName = "SEQ_EVENTS", allocationSize = 1)
     private final Integer id;
-    private final Integer idUser;
-    private final Integer idAddress;
-    private final TypeEvent typeEvent;
-    private final Status status;
-    private final RiskLevel riskLevel;
+    private Integer idUser;
+    private Integer idAddress;
+    private TypeEvent typeEvent;
+    private Status status;
+    private RiskLevel riskLevel;
 
     public Event(Integer id, Integer idUser, Integer idAddress, TypeEvent typeEvent, Status status, RiskLevel riskLevel) {
         this.id = id;
@@ -39,20 +39,40 @@ public class Event implements Serializable {
         return idUser;
     }
 
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
     public Integer getIdAddress() {
         return idAddress;
+    }
+
+    public void setIdAddress(Integer idAddress) {
+        this.idAddress = idAddress;
     }
 
     public TypeEvent getTypeEvent() {
         return typeEvent;
     }
 
+    public void setTypeEvent(TypeEvent typeEvent) {
+        this.typeEvent = typeEvent;
+    }
+
     public Status getStatus() {
         return status;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public RiskLevel getRiskLevel() {
         return riskLevel;
+    }
+
+    public void setRiskLevel(RiskLevel riskLevel) {
+        this.riskLevel = riskLevel;
     }
 
     @Override

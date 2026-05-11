@@ -49,7 +49,9 @@ public class EventController {
     @PatchMapping(EVENT_ID)
     public ResponseEntity<Event> update(
             @PathVariable Integer id,
-            @RequestBody Event event) {
+            @RequestBody Event eventUpdate) {
+        Event event = eventService.update(id, eventUpdate);
 
+        return ResponseEntity.ok().body(event);
     }
 }
