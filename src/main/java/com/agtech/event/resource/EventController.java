@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("events")
 public class EventController {
 
-    private final static String EVENT_ID = "id";
+    private final static String EVENT_ID = "/{id}";
     private final EventService eventService;
 
     public EventController(EventService eventService) {

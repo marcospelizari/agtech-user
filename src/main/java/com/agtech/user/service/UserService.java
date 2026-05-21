@@ -45,7 +45,7 @@ public class UserService {
             user.setEmail(userUpdate.getEmail());
         }
 
-        return userRepository.save(userUpdate);
+        return userRepository.save(user);
     }
 
     private User findUserById(Integer id) {

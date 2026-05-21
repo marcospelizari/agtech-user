@@ -3,6 +3,8 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.jar
+*.war
 
 ### STS ###
 .apt_generated
@@ -14,7 +16,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -31,3 +33,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Credenciais ###
+src/main/resources/application.properties
+docker-compose.yml
+
+# Logs
+*.log

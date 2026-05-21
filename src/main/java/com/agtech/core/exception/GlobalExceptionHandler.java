@@ -3,13 +3,12 @@ package com.agtech.core.exception;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
-    private final static String USER_NOT_FOUND = "Not Found";
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> userNotFoundException(
@@ -17,12 +16,11 @@ public class GlobalExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
         ErrorResponse error = new ErrorResponse(
                 status,
+                "Not Found",
                 e.getMessage(),
-                USER_NOT_FOUND,
                 request.getRequestURI()
         );
-
-        return ResponseEntity.ok().body(error);
+        return ResponseEntity.status(status).body(error);
     }
 
     @ExceptionHandler(EventNotFoundException.class)
@@ -31,11 +29,27 @@ public class GlobalExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
         ErrorResponse error = new ErrorResponse(
                 status,
+                "Not Found",
                 e.getMessage(),
-                USER_NOT_FOUND,
                 request.getRequestURI()
         );
+        return ResponseEntity.status(status).body(error);
+    }
 
-        return ResponseEntity.ok().body(error);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> validationException(
+            MethodArgumentNotValidException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        String message = e.getBindingResult().getFieldErrors().stream()
+                .map(f -> f.getField() + ": " + f.getDefaultMessage())
+                .findFirst()
+                .orElse("Dados inválidos");
+        ErrorResponse error = new ErrorResponse(
+                status,
+                "Bad Request",
+                message,
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(status).body(error);
     }
 }

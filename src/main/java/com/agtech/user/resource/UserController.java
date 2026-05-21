@@ -12,7 +12,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final String USER_ID = "id";
+    private final String USER_ID = "/{id}";
 
     public UserController(UserService userService) {
         this.userService = userService;

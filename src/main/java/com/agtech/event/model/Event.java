@@ -15,12 +15,18 @@ public class Event implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVENTS")
     @SequenceGenerator(name = "SEQ_EVENTS", sequenceName = "SEQ_EVENTS", allocationSize = 1)
-    private final Integer id;
+    private Integer id;
     private Integer idUser;
     private Integer idAddress;
+    @Enumerated(EnumType.STRING)
     private TypeEvent typeEvent;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
     private RiskLevel riskLevel;
+    public Event() {}
 
     public Event(Integer id, Integer idUser, Integer idAddress, TypeEvent typeEvent, Status status, RiskLevel riskLevel) {
         this.id = id;

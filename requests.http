@@ -1,0 +1,50 @@
+### 1. Registrar usuário (trocar o e-mail sempre que refizer o teste)
+POST http://localhost:8080/auth/registrar
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "email": "admin6@agtech.com",
+  "password": "123456"
+}
+
+###  2. Login (trocar o e-mail sempre que refizer o teste)
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin6@agtech.com",
+  "password": "123456"
+}
+
+### 3. Listar consumos
+GET http://localhost:8080/consumo-agua
+Authorization: Bearer TOKEN
+
+### 4. Registrar consumo
+POST http://localhost:8080/consumo-agua
+Authorization: Bearer TOKEN
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "volumeLitros": 150.0,
+  "localMonitorado": "Sede Principal",
+  "limiteAlertaLitros": 100.0
+}
+
+### 5. Listar alertas
+GET http://localhost:8080/alertas
+Authorization: Bearer TOKEN
+
+### 6. Alertas ativos
+GET http://localhost:8080/alertas/ativos
+Authorization: Bearer TOKEN
+
+### 7. Resolver alerta
+PUT http://localhost:8080/alertas/1/resolver
+Authorization: Bearer TOKEN
+
+### 8. Histórico de consumo do usuário 1
+GET http://localhost:8080/consumo-agua/historico/1
+Authorization: Bearer TOKEN

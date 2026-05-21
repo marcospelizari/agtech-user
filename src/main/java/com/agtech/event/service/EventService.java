@@ -45,7 +45,7 @@ public class EventService {
             event.setRiskLevel(updateEvent.getRiskLevel());
         }
 
-        return eventRepository.save(updateEvent);
+        return eventRepository.save(event);
     }
 
     private Event findEventById(Integer id) {
