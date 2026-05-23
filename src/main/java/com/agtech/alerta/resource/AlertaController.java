@@ -25,7 +25,7 @@ public class AlertaController {
         return ResponseEntity.ok(service.listarAtivos());
     }
 
-    @PutMapping("/{id}/resolver")
+    @PutMapping("/resolver/{id}")
     public ResponseEntity<AlertaResponse> resolver(@PathVariable Long id) {
         return ResponseEntity.ok(service.resolver(id));
     }
